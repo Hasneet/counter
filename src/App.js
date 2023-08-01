@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
 
+// Component always return JSX
+
 function App() {
+  // return an array
+  // [value, function to update the value]
+  const state = useState(1);
+  const counter = state[0];
+  const setCounter = state[1];
+  // this is React Node not HTML
+
+  function increment() {
+    setCounter(counter + 1)
+  }
+
+  function decrement() {
+    setCounter(counter - 1)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>{counter}</div>
+      <button onClick={increment}>INCREMENT</button>
+      <button onClick={decrement}>DECREMENT</button>
     </div>
   );
 }
